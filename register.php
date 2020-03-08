@@ -94,6 +94,8 @@ include('includes/navbar.php');
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </tbody>
         
