@@ -77,26 +77,55 @@ include('includes/navbar.php');
 
     <div class="table-responsive">
 
+      <?php  
+          $connection = mysqli_connect("localhost","root","","adminpanel");
+          $query = "SELECT *FROM register";
+          $query_run = mysqli_query($connection,$query);
+
+
+      ?>
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Postion</th>
-            <th>Office</th>
-            <th>Age</th>
-            <th>Start Date</th>
-            <th>Salary</th>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Edit</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
+        <?php
+            if(mysqli_num_rows($query_run)>0)
+            {
+              while($row = mysqli_fetch_assoc($query_run))
+              {
+                  ?>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><?php echo $row['id'];   ?></td>
+            <td><?php echo $row['username'];   ?></td> 
+            <td><?php echo $row['email'];   ?></td>
+            <td><?php echo $row['password'];   ?></td> 
+            <td>
+                <button type="submit" class="btn btn-success">Edit</button>
+            </td>
+            <td>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </td>
+
+
           </tr>
+          <?php
+              }
+            }
+            else{
+              echo "No record Found";
+            }
+
+
+        ?>
+         
         </tbody>
         
       </table>
