@@ -1,6 +1,16 @@
 <?php  
+include('logincheck.php');
+if(empty($_SESSION['username'])){
+  header('location:login.php');
+}
+?>
+
+<?php
 include('includes/header.php');       
 include('includes/navbar.php');
+
+
+
 
 ?>
 
